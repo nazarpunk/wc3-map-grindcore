@@ -1,2 +1,12 @@
-local a = CreateUnit(Player(0),FourCC('hfoo'),0,0,0);
-local b = CreateUnit(Player(0),FourCC('Hpal'),0,0,0);
+if false then
+    local u = CreateUnit(Player(0), FourCC('Uktl'), 0, 0, 0)
+    local x = GetUnitX(u)
+    local y = GetUnitY(u)
+    SelectUnit(u, true)
+    PanCameraToTimed(x, y, 0)
+
+else
+    --FogEnable(false)
+    --FogMaskEnable(false)
+    require 'lua.grindcore.hero_selection'
+end
