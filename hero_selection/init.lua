@@ -13,10 +13,8 @@ for _, id in pairs(list) do
 
     --SetUnitBaseUberTipById(id, name .. '|cffffcc00' .. keys[index][1] .. '|r')
 
-
-
-    print(GetUnitBaseProperNameById())
-
     SetUnitBaseGoldCostById(id, 0)
+
+    -- war3mapImported\
 
 end
