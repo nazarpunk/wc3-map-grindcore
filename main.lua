@@ -10,4 +10,5 @@ else
     --FogMaskEnable(false)
     require 'lua.grindcore.hero_selection'
     require 'lua.grindcore.handler.war3map'
+    require 'lua.grindcore.ability'
 end
