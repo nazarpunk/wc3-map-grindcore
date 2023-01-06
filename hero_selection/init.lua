@@ -72,11 +72,18 @@ TriggerAddAction(t, function()
 
     PlayerHero[pid] = u;
     SetHeroLevel(u, 10, true)
-    SelectHeroSkill(u, FourCC('Shod'))
+    --SelectHeroSkill(u, FourCC('Shod'))
 
     SetUnitX(u, 0)
     SetUnitY(u, 0)
     SetUnitFacingInstant(u, 270)
+
+    local a = GetUnitAbilityByIndex(u, 0);
+    print(Id2String(GetAbilityTypeId(a)))
+
+
+
+
 
     if (GetLocalPlayer() == p) then
         ClearSelection()

@@ -1,6 +1,5 @@
 local trig = CreateTrigger()
 local id = FourCC('Shod')
-EVENT_PLAYER_UNIT_SPELL_EFFECT = ConvertPlayerUnitEvent(274) ---@type playerunitevent
 
 for i = 0, bj_MAX_PLAYER_SLOTS - 1, 1
 do
