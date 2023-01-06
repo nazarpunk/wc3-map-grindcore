@@ -14,9 +14,7 @@ TriggerAddAction(trig, function()
     local p = GetOwningPlayer(u)
     local pid = GetPlayerId(p)
 
-    local m = PlayerMouse[pid];
-
-    DestroyEffect(AddSpecialEffect('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl', GetUnitX(u), GetUnitY(u)))
+    local m = PlayerMouseWorld[pid];
 
     DestroyEffect(AddSpecialEffect('Units\\Wight\\HandOfDeath.mdx', m[1], m[2]))
 end)
