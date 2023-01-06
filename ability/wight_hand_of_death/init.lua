@@ -10,10 +10,15 @@ TriggerAddCondition(trig, Condition(function()
 end))
 TriggerAddAction(trig, function()
     local u = GetTriggerUnit()
+    local ux, uy = GetUnitX(u), GetUnitY(u)
     local p = GetOwningPlayer(u)
     local pid = GetPlayerId(p)
+    local t = PlayerMouseWorld[pid]
+    local ex, ey = t[1], t[2];
+    local e = AddSpecialEffect('Units\\Wight\\HandOfDeath.mdx', ex, ey)
 
-    local m = PlayerMouseWorld[pid];
+    local a = math.atan(ey - uy, ex - ux)
+    SetSpecialEffectYaw(e, a * bj_RADTODEG)
 
-    DestroyEffect(AddSpecialEffect('Units\\Wight\\HandOfDeath.mdx', m[1], m[2]))
+    DestroyEffect(e)
 end)

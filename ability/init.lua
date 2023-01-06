@@ -7,19 +7,24 @@ end
 
 local order = {
     [FourCC('Shod')] = 852529, -- absorb
-    [FourCC('A001')] = 852662, -- acidbomb
+    [FourCC('A000')] = 852662, -- acidbomb
 }
 
 TriggerAddAction(trig, function()
     local u = GetTriggerUnit()
     local aid = GetLearnedSkill()
 
-    for i = 0, 10, 1 do
+    local i = 0
+    while true do
         local a = GetUnitAbilityByIndex(u, i);
-        if (a ~= nil and aid == GetAbilityTypeId(a)) then
-            if order[aid] ~= nil then
-                SetAbilityOrderId(a, order[aid])
-            end
+        if a == nil then
+            break
         end
+        if aid == GetAbilityTypeId(a) and order[aid] ~= nil then
+            print('catcha')
+            SetAbilityOrderId(a, order[aid])
+            break
+        end
+        i = i + 1
     end
 end)
