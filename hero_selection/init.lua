@@ -3,7 +3,19 @@ PlayerHero = {}
 require 'lua.grindcore.hero_selection.tavern'
 
 local list = { FourCC('Uktl') }
-local hkeys = { { 'Q', OSKEY_Q } }
+local udata = {
+    { 'Q', OSKEY_Q },
+    { 'W', OSKEY_W },
+    { 'E', OSKEY_E },
+    { 'R', OSKEY_R },
+}
+
+local adata = {
+    { 'Q', OSKEY_Q, 852135 },
+    { 'W', OSKEY_W, 852137 },
+    { 'E', OSKEY_E, 852577 },
+    { 'R', OSKEY_R, 852579 },
+}
 
 ---@param name string
 ---@param primary boolean
@@ -16,8 +28,8 @@ for _, id in pairs(list) do
 
     local name = GetUnitBaseNameById(id)
 
-    SetUnitBaseTipById(id, name .. ' (|cffffcc00' .. hkeys[index][1] .. '|r)')
-    SetUnitBaseHotkeyById(id, hkeys[index][2])
+    SetUnitBaseTipById(id, name .. ' (|cffffcc00' .. udata[index][1] .. '|r)')
+    SetUnitBaseHotkeyById(id, udata[index][2])
 
     local ps = GetUnitBasePrimaryStatById(id);
 
@@ -39,11 +51,34 @@ for _, id in pairs(list) do
     print(abs)
     print('---')
 
+    local i = 0;
     for s in abs:gmatch('[^,]+') do
+        i = i + 1
+        local data = adata[i]
         local aid = FourCC(s)
-        print(s)
-        print(GetAbilityBaseStringFieldById(aid, ABILITY_SF_NAME))
-        print(GetAbilityBaseIntegerFieldById(aid, ABILITY_IF_LEVELS))
+        print(aid, ' ', s)
+
+        AbilityOrderId[aid] = data[3]
+
+        SetAbilityBaseHotkeyById(aid, data[2])
+        --SetAbilityBaseResearchHotkeyById(aid, data[2])
+
+        --[[
+        SetAbilityBaseIntegerFieldById(aid, ABILITY_IF_BUTTON_POSITION_NORMAL_X, i - 1)
+        SetAbilityBaseIntegerFieldById(aid, ABILITY_IF_BUTTON_POSITION_RESEARCH_X, i - 1)
+        SetAbilityBaseIntegerFieldById(aid, ABILITY_IF_BUTTON_POSITION_NORMAL_Y, 2)
+        SetAbilityBaseIntegerFieldById(aid, ABILITY_IF_BUTTON_POSITION_RESEARCH_Y, 0)
+        --]]
+
+        --local levels = GetAbilityBaseIntegerFieldById(aid, ABILITY_IF_LEVELS)
+        --print(aid)
+        --for k = 0, k < levels, 1 do
+        --SetAbilityBaseIntegerFieldById()
+        --end
+
+        --print(s)
+        --print(GetAbilityBaseStringFieldById(aid, ABILITY_SF_NAME))
+        --print()
     end
 
     SetUnitBaseUberTipById(id, ubertip)

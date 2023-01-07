@@ -12,6 +12,6 @@ if false then
 else
     --FogEnable(false)
     --FogMaskEnable(false)
-    require 'lua.grindcore.hero_selection'
     require 'lua.grindcore.ability'
+    require 'lua.grindcore.hero_selection'
 end

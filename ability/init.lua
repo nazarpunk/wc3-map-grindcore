@@ -1,14 +1,11 @@
+AbilityOrderId = {}
+
 require 'lua.grindcore.ability.wight_hand_of_death'
 
 local trig = CreateTrigger()
 for i = 0, bj_MAX_PLAYER_SLOTS - 1, 1 do
     TriggerRegisterPlayerUnitEvent(trig, Player(i), EVENT_PLAYER_HERO_SKILL, nil)
 end
-
-local order = {
-    [FourCC('Shod')] = 852529, -- absorb
-    [FourCC('A000')] = 852662, -- acidbomb
-}
 
 TriggerAddAction(trig, function()
     local u = GetTriggerUnit()
@@ -20,9 +17,9 @@ TriggerAddAction(trig, function()
         if a == nil then
             break
         end
-        if aid == GetAbilityTypeId(a) and order[aid] ~= nil then
-            print('catcha')
-            SetAbilityOrderId(a, order[aid])
+        if aid == GetAbilityTypeId(a) and AbilityOrderId[aid] ~= nil then
+            print('abil ', Id2String(aid), ' ', AbilityOrderId[aid])
+            SetAbilityOrderId(a, AbilityOrderId[aid])
             break
         end
         i = i + 1
