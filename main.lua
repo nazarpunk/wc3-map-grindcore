@@ -1,6 +1,6 @@
-require 'lua.ujapi.asset.ConvertTypeFix'
-require 'lua.ujapi.asset.PlayerMouseMove'
-require 'lua.ujapi.asset.HandleCounter'
+require 'ujapi.asset.ConvertTypeFix'
+require 'ujapi.asset.PlayerMouseMove'
+require 'ujapi.asset.HandleCounter'
 
 if false then
     local u = CreateUnit(Player(0), FourCC('Uktl'), 0, 0, 0)
